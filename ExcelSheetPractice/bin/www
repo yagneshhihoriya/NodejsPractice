@@ -1,0 +1,60 @@
+const cluster = require('cluster');
+const express = require('express')
+const { cpus } = require('os')
+const server = express()
+const numCPUs = cpus().length;
+require('dotenv').config()
+const PORT = process.env.PORT || 5000
+const { ErrorCatcher } = require('../api/middleware/error')
+const db = require('../models')
+
+
+
+process.on('uncaughtException', (err) => {
+    console.log(`Error : UncaughtException , Message : ${err}`)
+})
+
+
+server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
+
+server.use('/static', express.static('public'))
+
+db.sequelize.sync(()=>{
+    console.log("Database Connected && Synced")
+})
+
+
+server.use('/', require('../app'))
+server.use('*',(req,res)=>{
+    res.send("Route Not Exist")
+})
+
+
+server.use(ErrorCatcher)
+
+
+
+// Multiple Instance of Server using Clustering
+if (cluster.isMaster) {
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+    cluster.on('exit', (worker, code, signal) => {
+        cluster.fork();
+    });
+} else {
+    server.listen(PORT, () => console.log(`Server running on ${PORT}`))
+}
+
+process.on('unhandledRejection', (err) => {
+    console.log(`Error : unhandledRejection , Message : ${err}`)
+})
+
+
+
+  
+
+  
+
+
