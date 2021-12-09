@@ -42,6 +42,6 @@ function mailer(tomail, bcc, cc, message) {
     });
 }
 
-mailer('mandeep@nimapinfotech.com', "MAil from NodeMailer")
+mailer('yagnesh@nimapinfotech.com', "MAil from NodeMailer")
     // console.log(path.join(__dirname, '../public/views/'))
 module.exports = mailer;

@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/mandeep9/nodejspractice.git"
+    "url": "https://github.com/yagneshhihoriya/NodejsPractice.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/mandeep9/nodejspractice/issues"
+    "url": "https://github.com/yagneshhihoriya/NodejsPractice.git"
   },
-  "homepage": "https://gitlab.com/mandeep9/nodejspractice#readme",
+  "homepage": "https://github.com/yagneshhihoriya/NodejsPractice.git",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",

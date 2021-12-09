@@ -1,10 +1,10 @@
 let a = {}
 
 a = {
-    name:"Mandeep"
+    name:"Yagnesh"
 }
 a = {
-    mobile:12345678
+    mobile:9924161690
 }
 
 console.log(a)
